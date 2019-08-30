@@ -1,41 +1,27 @@
 ## eo-cli
-企业级脚手架
+极简的脚手架生成器demo，实现了核心功能
 
-### 项目架构
-
-#### webpack4 + vue + vuex + vue-router 搭建前后端分离项目
+* 1. 根据package.json 中 bin指定的cli，全局暴露eo-cli
+* 2. 根据用户选择，生成自定义的项目名称，简介，创建项目
+* 3. templates.json 文件中 path 指向了 vue 脚手架的项目仓库，用户init后，等，动态download该仓库中存放的脚手架
 
 ### 部署步骤
-```
-1. npm install eo-cli -g
-2. eo-cli init
+```bash
+# 全局安装 cli
+npm install eo-cli -g
+
+# 初始化脚手架
+eo-cli init
+
+# 指定项目名 介绍 作者
 ```
 ### 目录结构
 ```
-├── Readme.md                   // help
-├── build                       // 配置
-│   ├── webpack.base.config.js  // 开发环境和生产环境公用配置文件
-│   ├── webpack.dev.config.js   // 开发环境配置
-│   ├── webpack.dll.config.js   // 生产环境打包公共资源
-│   ├── webpack.prod.config.js  // 生产环境配置
-├── config                      // 配置
-│   ├── index.js                // api baseURL 配置 及 开发环境下跨域代理 proxy 配置
-├── package.json
-├── public                      // 开发环境主目录
-│   ├── api                     // 所有请求
-│   ├── assets                  // 静态资源文件
-│       ├── css                 // 样式文件
-│       ├── images              // 图片资源
-│   ├── components              // 组件
-│   ├── layout                  // 全局Layout组件
-│   ├── router                  // 前端路由配置
-│   ├── store                   // 状态管理
-│   ├── util                    // 公用方法
-│   ├── views                   // vue页面
-│   ├── App.vue                 // 根vue文件
-│   ├── index.html              // 入口页面
-│   ├── main.js                 // 入口文件
-├── .babelrc                    // babel配置
-├── postcss.config.js           // postcss配置
-└── tools
+├── README.md                   // help
+├── bin                         // bin目录
+│   ├── iyiou-cli               // 定义终端，执行相关命令
+├── commands                    // 命令
+│   ├── init.js                 // 初始化操作，用户进行交互式的download
+├── package.json                // 配置项
+└── templates.json              // 配置脚手架git远程仓库地址
 ```
